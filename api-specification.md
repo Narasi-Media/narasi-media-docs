@@ -153,6 +153,54 @@ Dokumen ini memuat spesifikasi antarmuka pemrograman aplikasi (REST API) **Buzze
 }
 ```
 
+### J. Admin: Tambah Layanan Baru (Create Service)
+* **Endpoint**: `POST /api/admin/services`
+* **Request Body**:
+```json
+{
+  "id": "SRV-501",
+  "category_id": "cat-tiktok",
+  "name": "TikTok Likes Instant Indo [Maks 20K]",
+  "service_type": "default",
+  "price_original": 3000,
+  "price_user": 4500,
+  "min_order": 50,
+  "max_order": 20000,
+  "refill_supported": true,
+  "refill_days": 14,
+  "description": "Likes real aktif Indonesia, garansi 14 hari",
+  "is_active": true
+}
+```
+
+### K. Admin: Perbarui Layanan (Update Service)
+* **Endpoint**: `PUT /api/admin/services/:id`
+* **Request Body**: Mirip dengan create service (mengupdate harga, min/max, deskripsi, dsb).
+
+### L. Admin: Toggle Visibilitas Layanan (Active / Inactive)
+* **Endpoint**: `POST /api/admin/services/:id/toggle`
+* **Response**: Mengubah flag `is_active` secara instan, menyembunyikan atau menampilkan layanan di web pemesanan client.
+
+### M. Admin: Hapus Layanan (Delete Service)
+* **Endpoint**: `DELETE /api/admin/services/:id`
+* **Response**: Menghapus layanan secara permanen dari katalog.
+
+### N. Admin: Atur Margin Profit Massal (Batch Markup)
+* **Endpoint**: `POST /api/admin/services/batch-markup`
+* **Request Body**:
+```json
+{
+  "percentage": 30.0,
+  "category_id": null
+}
+```
+* **Keterangan**: Mengkalkulasi ulang `price_user = price_original * (1 + percentage / 100)` untuk semua layanan atau kategori tertentu.
+
+### O. Admin: CRUD Kategori Layanan
+* `POST /api/admin/categories` (Tambah Kategori)
+* `PUT /api/admin/categories/:id` (Perbarui Kategori)
+* `DELETE /api/admin/categories/:id` (Hapus Kategori)
+
 ---
 
 ## 3. Protokol Standar SMM Provider API (v2)
