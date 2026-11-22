@@ -7,9 +7,9 @@
 
 **Buzzer Media** mengadopsi standar visual **Neo-Fintech & Cyber-Minimalism** yang terinspirasi dari aplikasi finansial global modern (seperti Linear, Stripe, dan Revolut). Sistem antarmuka dirancang **Adaptive Dual-Theme**: berawal secara default dalam **Dark Mode (Midnight Obsidian)** yang futuristik, dan dapat beralih secara instan ke **Light Mode (Clean Slate / White Mode)** yang terang, bersih, dan profesional.
 
-### Pilihan Font Style & Tipografi
-* **Primary Sans-Serif**: **Plus Jakarta Sans** (Google Fonts: 400, 500, 600, 700, 800)
-  * Font geometris modern dengan sudut halus (*humanist touch*) yang memberikan keterbacaan tinggi pada teks navigasi, kartu layanan, dan formulir input.
+### Pilihan Font Style & Tipografi Baru
+* **Primary Sans-Serif**: **Outfit** (Google Fonts: 300, 400, 500, 600, 700, 800, 900)
+  * Font geometris modern dengan proporsi circular dan kurva presisi yang dirancang khusus untuk antarmuka digital modern kelas atas. Memberikan tampilan segar, elegan, dan estetik khas fintech kontemporer.
 * **Monospace & Numerical**: **JetBrains Mono**
   * Digunakan untuk semua angka nominal saldo, harga pesanan, kode unik deposit, dan format syntax pesanan masal dengan fitur `tabular-nums` untuk perataan vertikal yang presisi.
 
