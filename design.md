@@ -1,165 +1,100 @@
 # Buzzer Media UI/UX Design Specification (`design.md`)
-
-## 1. Executive Summary & Design Vision
-
-**Buzzer Media** adalah evolusi generasi berikutnya dari platform Social Media Marketing (SMM) dan Buzzer Service di Indonesia. Menggantikan antarmuka monolitik klasik yang kaku, Buzzer Media dirancang dengan filosofi **Neo-Fintech & Cyber-Minimalism**: antarmuka sekelas aplikasi perbankan modern yang cepat, ultra-responsif, transparan, dan memberikan rasa aman bagi pengguna pemula maupun agen/reseller skala besar.
-
-Platform ini terbagi menjadi dua produk antarmuka utama:
-1. **Client Web Apps (`buzzer-media-frontend-web-apps`)**: Portal pesanan, top-up saldo, pelacakan real-time, dan manajemen akun member.
-2. **Admin Command Center (`buzzer-media-frontend-admin-panel`)**: Dasbor eksekutif untuk verifikasi deposit manual QRIS, manajemen provider SMM upstream, pengaturan margin harga, dan kontrol operasional.
+*Evolusi Desain Neo-Fintech & Adaptive Dual-Theme (Dark & Light Mode)*
 
 ---
 
-## 2. Design Tokens & Design System
+## 1. Visi Desain & Tipografi Baru
 
-### A. Palet Warna (Color Palette)
+**Buzzer Media** mengadopsi standar visual **Neo-Fintech & Cyber-Minimalism** yang terinspirasi dari aplikasi finansial global modern (seperti Linear, Stripe, dan Revolut). Sistem antarmuka dirancang **Adaptive Dual-Theme**: berawal secara default dalam **Dark Mode (Midnight Obsidian)** yang futuristik, dan dapat beralih secara instan ke **Light Mode (Clean Slate / White Mode)** yang terang, bersih, dan profesional.
 
-| Token Name | Hex Code | Deskripsi & Kegunaan |
-| :--- | :--- | :--- |
-| `primary-600` | `#4F46E5` | Royal Indigo: Warna aksi utama, CTA primer, header aksen |
-| `primary-500` | `#6366F1` | Indigo Terang: Status hover, link aktif, gradient stops |
-| `secondary-500` | `#7C3AED` | Royal Violet: Aksen sekunder, banner promo, badge reseller |
-| `accent-emerald` | `#10B981` | Emerald Success: Status Success/Completed, saldo positif, verifikasi |
-| `accent-amber` | `#F59E0B` | Warning Amber: Status Pending, Processing, kode unik transfer |
-| `accent-rose` | `#F43F5E` | Danger Rose: Status Error/Canceled, validasi gagal, tombol reject |
-| `accent-cyan` | `#06B6D4` | Info Cyan: Status In-Progress, tooltip, informasi kecepatan server |
-| `bg-dark` | `#0B0F19` | Deep Midnight: Latar belakang kanvas mode gelap |
-| `surface-dark` | `#111827` | Slate Dark Surface: Kartu kontainer, modal, sidebar |
-| `surface-border`| `rgba(255, 255, 255, 0.08)` | Border halus untuk efek glassmorphism |
-| `text-primary` | `#F9FAFB` | Teks judul utama dan angka metrik penting |
-| `text-secondary`| `#9CA3AF` | Teks keterangan, label form, deskripsi layanan |
-
-### B. Tipografi & Skala Teks
-* **Font Family**: Inter, Plus Jakarta Sans, atau Segoe UI. Angka menggunakan fitur font `tabular-nums` untuk perataan nominal harga yang presisi.
-* **Skala**:
-  * Heading 1 (Hero / Metrics): `2.25rem` (36px), font-weight 700.
-  * Heading 2 (Card Title): `1.5rem` (24px), font-weight 600.
-  * Heading 3 (Section Header): `1.125rem` (18px), font-weight 600.
-  * Body Text: `0.875rem` (14px), font-weight 400 & 500.
-  * Small / Badges: `0.75rem` (12px), font-weight 600, uppercase tracking.
-
-### C. Elevasi & Efek Visual
-* **Glassmorphism**: `backdrop-blur-md bg-gray-900/60 border border-white/10`.
-* **Micro-interactions**: Efek transisi halus (`transition-all duration-200 ease-out`), tombol hover dengan sedikit peningkatan elevasi (`shadow-lg shadow-indigo-500/25`), dan skeleton loaders saat pengambilan data async.
+### Pilihan Font Style & Tipografi
+* **Primary Sans-Serif**: **Plus Jakarta Sans** (Google Fonts: 400, 500, 600, 700, 800)
+  * Font geometris modern dengan sudut halus (*humanist touch*) yang memberikan keterbacaan tinggi pada teks navigasi, kartu layanan, dan formulir input.
+* **Monospace & Numerical**: **JetBrains Mono**
+  * Digunakan untuk semua angka nominal saldo, harga pesanan, kode unik deposit, dan format syntax pesanan masal dengan fitur `tabular-nums` untuk perataan vertikal yang presisi.
 
 ---
 
-## 3. UI/UX Spesifikasi: Client Web Apps
+## 2. Adaptive Dual-Theme Design Tokens (Dark & Light Mode)
+
+Sistem token warna dirancang dengan kontras rasio minimal **4.5:1 (WCAG AA Standard)** pada kedua mode:
+
+| Token Name | Dark Mode (Default) | Light / White Mode | Kegunaan |
+| :--- | :--- | :--- | :--- |
+| **Canvas Background** | `#0B0F19` (Midnight Obsidian) | `#F8FAFC` (Slate Porcelain) | Latar belakang halaman aplikasi |
+| **Surface Card** | `rgba(17, 24, 39, 0.75)` | `#FFFFFF` (Pure White) | Kontainer kartu, modal, dan formulir |
+| **Card Border** | `rgba(255, 255, 255, 0.08)` | `#E2E8F0` (Border Slate-200) | Garis pemisah kartu & grid |
+| **Header Surface** | `rgba(11, 15, 25, 0.85)` | `rgba(255, 255, 255, 0.90)` | Sticky top header dengan backdrop blur |
+| **Text Primary** | `#F9FAFB` (Slate-50) | `#0F172A` (Slate-900) | Judul header, angka metrik, teks utama |
+| **Text Secondary** | `#9CA3AF` (Gray-400) | `#64748B` (Slate-500) | Sub-judul, keterangan spek, label form |
+| **Text Muted** | `#6B7280` (Gray-500) | `#94A3B8` (Slate-400) | Waktu relatif, placeholder, hint |
+| **Brand Primary** | `#6366F1` (Indigo-500) | `#4F46E5` (Indigo-600) | Warna tombol aksi utama (CTA), active tab |
+| **Brand Primary Hover**| `#4F46E5` (Indigo-600) | `#4338CA` (Indigo-700) | State hover tombol primer |
+| **Success Emerald** | `#10B981` (Emerald-500) | `#059669` (Emerald-600) | Saldo akun, status Success, tombol bayar |
+| **Warning Amber** | `#F59E0B` (Amber-500) | `#D97706` (Amber-600) | Kode unik 3 digit, status Pending |
+| **Danger Rose** | `#F43F5E` (Rose-500) | `#E11D48` (Rose-600) | Peringatan saldo kurang, status Error |
+| **Input Background** | `#111827` (Gray-900) | `#F1F5F9` (Slate-100) | Input field data target, select, textarea |
+
+---
+
+## 3. Fitur Theme Switcher (Dark $\leftrightarrow$ White Mode)
+
+* **Tombol Pengalih di Header**:
+  * Ikon dinamis: Ikon **Bulan (Moon)** saat mode terang aktif, dan Ikon **Matahari (Sun)** saat mode gelap aktif.
+  * Dilengkapi animasi rotasi mikro halus (`rotate-180 transition-transform duration-300`).
+* **Penyimpanan Preferensi**:
+  * Nilai tema disimpan secara persisten di `localStorage.theme` (`'dark'` atau `'light'`).
+  * Jika pengguna belum memilih, sistem otomatis memprioritaskan mode gelap (`dark`) sebagai nilai bawaan.
+
+---
+
+## 4. UI/UX Spesifikasi: Client Web Apps
 
 ### A. Navigation & Top Header
-* **Sticky Navigation Bar**:
-  * Logo **Buzzer Media** dengan badge indikator server "Live".
-  * **Saldo Widget Interaktif**: Menampilkan saldo format mata uang rupiah (`Rp 250.000`) dengan tombol cepat `+ Top Up` yang memicu modal deposit.
-  * Navigasi Utama: *Dashboard*, *Pesan Baru*, *Pesanan Masal*, *Riwayat*, *Katalog Layanan*, *Deposit*, *Tiket*.
-  * User Avatar & Dropdown: *Pengaturan Akun*, *Mutasi Saldo (Ledger)*, *Keluar*.
+* **Brand Logo**: Logo gradien ungu-indigo dengan indikator status server `v2.0` yang berdenyut (*pulsing dot*).
+* **Saldo Widget Interaktif**:
+  * Menampilkan saldo dengan format Rupiah `tabular-nums` yang tebal.
+  * Tombol cepat `+ Top Up` yang memicu modal QRIS.
+* **Theme Toggle Switch**: Tombol 1-klik untuk beralih antara Dark Mode dan White Mode tanpa me-reload halaman.
+* **Profil Pengguna**: Avatar singkatan username dengan badge status "VIP Member".
 
 ### B. Dashboard Overview
-1. **Financial & Order Summary Metrics**:
-   * *Sisa Saldo*: Nominal besar dengan persentase pertumbuhan bulanan.
-   * *Total Pesanan*: Lifetime counter pesanan sukses.
-   * *Pengeluaran Bulan Ini*: Total akumulasi biaya order.
-   * *Tiket Aktif*: Indikator tiket yang sedang direspon admin.
-2. **Interactive Spending Chart**:
-   * Grafik garis interaktif 30 hari terakhir (Pengeluaran vs Jumlah Pesanan).
-3. **Papan Pengumuman & Rekomendasi Layanan**:
-   * Carousel kartu berita: Layanan terbaik hari ini (kecepatan kilat), diskon harga, dan catatan server maintenance.
+* **Pengumuman Sistem**: Kartu pengumuman dengan border samping indigo yang memuat update kecepatan server dan promo bonus deposit.
+* **Grid 4 Kartu KPI**:
+  1. *Sisa Saldo*: Nominal saldo dengan tombol shortcut top-up.
+  2. *Total Pesanan*: Akumulasi jumlah pesanan sukses.
+  3. *Total Pengeluaran*: Akumulasi belanja seumur hidup.
+  4. *Total Deposit*: Akumulasi deposit yang berhasil masuk.
 
-### C. Alur Pesanan Baru (Single Order UX)
-Formulir pesanan baru didesain bertingkat (*progressive disclosure*) untuk mencegah kesalahan input:
-1. **Langkah 1: Pemilihan Kategori**:
-   * Grid tombol kategori berlogo sosial media (Instagram, TikTok, YouTube, Twitter/X, Facebook, Telegram, Google Review).
-   * Kategori yang dipilih memicu animasi filter instan.
-2. **Langkah 2: Pemilihan Layanan**:
-   * Dropdown searchable yang menampilkan: `[ID] Nama Layanan | Rp [Harga/1K] | [Badge Garansi]`.
-   * Setelah layanan dipilih, muncul **Kartu Informasi Spek Layanan**:
-     * Minimal Pesan: e.g. 100
-     * Maksimal Pesan: e.g. 500.000
-     * Kecepatan: Rata-rata 1.000 - 5.000 / jam
-     * Garansi: 30 Hari Refill Guarantee (atau Tanpa Garansi)
-     * Deskripsi lengkap tata cara input link (misal: "Harus akun publik, bukan private").
-3. **Langkah 3: Input Target & Kalkulator Harga**:
-   * Input `Target`: Otomatis memvalidasi format link sesuai platform (misal regex URL instagram).
-   * Input `Jumlah`: Slider atau input angka.
-   * Input `Komentar Kustom` (kondisional jika layanan komentar): Textarea baris-per-baris dengan kalkulator baris otomatis.
-   * **Real-time Price Preview Box**:
-     $$\text{Total Bayar} = \left(\frac{\text{Jumlah}}{1.000}\right) \times \text{Harga per 1K}$$
-   * Indikator validasi saldo: Menampilkan peringatan jika `Saldo < Total Bayar` dengan CTA tombol cepat top-up.
+### C. Alur Pemesanan Baru (Single Order)
+1. **Pemilihan Kategori**: Tombol pil kategori (Instagram, TikTok, YouTube, Twitter/X) dengan transisi highlight halus.
+2. **Dropdown Layanan**: Menampilkan ID layanan, nama lengkap, harga per 1.000, batas min/max, dan garansi refill.
+3. **Kartu Informasi Spesifikasi Layanan**: Menampilkan estimasi kecepatan dan instruksi format link.
+4. **Input Target & Jumlah**: Input kuota pesanan dengan **Kalkulator Harga Real-time**:
+   $$\text{Total Bayar} = \left(\frac{\text{Jumlah}}{1.000}\right) \times \text{HargaPerK}$$
+5. **Validasi Saldo Instan**: Menampilkan peringatan merah halus jika saldo pengguna kurang dari estimasi total bayar.
 
-### D. Alur Pesanan Masal (Mass Order UX)
-* Textarea lebar monospace dengan nomor baris otomatis.
-* Format: `ID_Layanan|Target_URL|Jumlah`.
-* **Live Syntax Checker**: Memvalidasi tiap baris secara real-time. Jika baris 3 salah format, diberikan indikator highlight merah dengan penjelasan error sebelum user menekan tombol submit.
-* Ringkasan Total Akumulasi Biaya sebelum konfirmasi.
+### D. Alur Pesanan Masal (Mass Order)
+* Textarea font monospace dengan nomor baris otomatis.
+* Syntax standar: `ID_Layanan|Target_Link|Jumlah`.
+* Ringkasan hasil batch memisahkan pesanan yang sukses dan baris yang gagal dengan alasan error yang jelas.
 
-### E. Alur Riwayat Pesanan (Order History UX)
-* Tab Filter Cepat: *Semua*, *Pending*, *Processing*, *Success*, *Partial*, *Canceled/Error*.
-* Kolom DataGrid Lengkap:
-  * ID Pesanan (dengan tombol klik untuk salin).
-  * Waktu transaksi (format waktu relatif: *2 menit lalu* / absolut).
-  * Layanan (dengan logo platform).
-  * Target (klik untuk membuka link di tab baru).
-  * Jumlah, Jumlah Awal (*Start Count*), Sisa (*Remains*).
-  * Harga Total.
-  * Status Badge berwarna.
-  * **Tombol Aksi**:
-    * Tombol *Refill* (aktif jika layanan mendukung refill dan status *Success*).
-    * Tombol *Bantuan* (langsung membuka form tiket dengan ID pesanan otomatis terisi).
+### E. Riwayat Pesanan & Refill Garansi
+* Filter status: *Semua, Pending, Processing, Success, Partial, Error*.
+* Kolom DataGrid lengkap: ID Pesanan, Waktu Transaksi, Layanan, Target Link, Jumlah/Sisa, Harga Total, Status Badge berwarna, dan Tombol `🛡️ Refill`.
 
-### F. Alur Deposit (Manual QRIS & Payment Gateway)
-* **Pilihan 1: Manual QRIS (Prioritas Pertama)**:
-  1. Pengguna memasukkan nominal deposit (misal `Rp 50.000`).
-  2. Sistem menghasilkan **Kode Unik 3 Digit Acak** (misal `Rp 50.387`) untuk identifikasi.
-  3. Menampilkan **Gambar Barcode QRIS Resmi Buzzer Media** yang jelas dan dapat diunduh / di-scan langsung dari aplikasi m-banking atau e-wallet (BCA, Mandiri, Dana, GoPay, OVO, ShopeePay).
-  4. Instruksi pembayaran jelas: "Transfer tepat hingga 3 digit terakhir!".
-  5. Formulir Konfirmasi & Upload Bukti:
-     * Nama Pengirim Rekening / Akun E-Wallet.
-     * Drag-and-drop / upload file foto struk/screenshot pembayaran (preview gambar instan).
-     * Tombol "Kirim Bukti Pembayaran".
-  6. Status Invoice: Tampilan status invoice real-time (*Menunggu Pembayaran* $\rightarrow$ *Menunggu Verifikasi Admin* $\rightarrow$ *Saldo Berhasil Masuk*).
-* **Pilihan 2: Otomatis (Instant Payment Gateway - TriPay / Xendit)**:
-  * Opsi Virtual Account (BCA, Mandiri, BNI, BRI) dengan nomor VA yang dapat disalin 1-klik.
+### F. Modal Deposit QRIS Manual
+1. **Pemilihan Nominal**: Tombol cepat Rp 20.000 s/d Rp 500.000 dengan preview bonus promo +5%.
+2. **Barcode QRIS Resmi**: Render QRIS vector resolusi tinggi dengan kode unik 3 digit acak (misal Rp 50.387).
+3. **Upload Bukti Struk**: Form nama pengirim rekening dan upload file foto dengan preview gambar instan.
+4. **Status Antrean**: Feedback status bahwa invoice sedang diverifikasi oleh admin.
 
 ---
 
-## 4. UI/UX Spesifikasi: Admin Command Center
+## 5. UI/UX Spesifikasi: Admin Command Center
 
-### A. Executive Overview
-* **KPI Header Cards**: Total Omset Hari Ini (GMV), Estimasi Margin Laba Bersih, Antrean Deposit Menunggu Verifikasi, dan Saldo Akun Provider Utama.
-* **Server Health Monitor**: Status koneksi API ke upstream SMM providers (Latency, Error Rate, Quota).
-
-### B. Verifikasi Deposit Manual (Manual QRIS Approvals)
-Halaman kerja utama staf keuangan admin:
-* **Tabel Antrean Verifikasi**:
-  * ID Deposit, Tanggal & Jam, Username Member, Nominal Transfer, Kode Unik, Total Ditagih, Nama Pengirim.
-  * Thumbnail Bukti Transfer: Klik untuk membuka modal lightbox gambar resolusi tinggi untuk memverifikasi keaslian bukti transfer.
-  * Tombol Aksi Cepat:
-    * **Setujui (Approve)**: Memicu SweetAlert konfirmasi $\rightarrow$ Saldo pengguna otomatis bertambah $\rightarrow$ Status berubah menjadi `success` $\rightarrow$ Pencatatan otomatis ke `balance_logs`.
-    * **Tolak (Reject)**: Menampilkan pilihan alasan penolakan (misal: "Struk tidak valid", "Dana belum masuk mutasi", "Nominal tidak sesuai").
-
-### C. Manajemen Pesanan & Sinkronisasi
-* Tabel seluruh pesanan lintas pengguna.
-* Kemampuan melakukan *Manual Status Override* jika provider mengalami kendala.
-* Fitur *Auto-Refund Calculator* untuk pesanan berstatus *Partial*: Sistem menghitung sisa kuota yang belum selesai dan mengembalikan proporsi saldo yang adil secara instan ke akun pengguna.
-
-### D. Manajemen Layanan & Markup Margin Harga
-* Konfigurasi integrasi SMM Provider API (URL API & API Key).
-* Tombol *Sync Catalog from Provider*: Mengimpor ribuan layanan langsung dari server penyedia.
-* **Markup Pricing Engine**:
-  * Rule global: Tambahkan profit margin (misal: markup +25% dari harga asli modal provider).
-  * Custom markup per kategori atau per layanan spesifik.
-  * Tombol sakelar cepat (*Enable / Disable Service*).
-
-### E. Pengaturan QRIS & Rekening Manual
-* Formulir upload gambar QRIS resmi (PNG/JPG/SVG).
-* Pengaturan daftar rekening bank tujuan manual (BCA, Mandiri, BRI, BNI).
-* Pengaturan persentase promo bonus saldo (misal: "Bonus Deposit 5%").
-
----
-
-## 5. Responsivitas & Desain Mobile-First
-
-* Seluruh komponen dirancang menggunakan kisi fleksibel CSS Grid dan Flexbox.
-* Pada layar mobile (< 768px):
-  * Sidebar bertransformasi menjadi Bottom Navigation Bar untuk navigasi satu tangan yang nyaman.
-  * Tabel DataGrid bertransformasi menjadi format Card Stack yang rapi dan mudah di-scroll.
-  * QRIS barcode otomatis memenuhi lebar layar agar mudah di-screenshot atau di-scan ponsel lain.
+* **Antrean Verifikasi Deposit**: Tabel deposit pending dengan nominal yang ditagih, kode unik, nama pengirim, dan thumbnail bukti transfer.
+* **Modal Lightbox**: Menampilkan foto struk bukti transfer ukuran penuh untuk verifikasi visual admin.
+* **Aksi Cepat 1-Klik**:
+  * Tombol **Setujui (Approve)**: Otomatis mengkredit saldo pengguna secara instan dan mencatat ke log mutasi.
+  * Tombol **Tolak (Reject)**: Menolak invoice dengan alasan tertentu.
