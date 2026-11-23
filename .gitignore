@@ -1,1 +1,6 @@
 .DS_Store
+
+# Credentials & Secrets
+creds.txt
+*.env*
+
