@@ -1,6 +1,6 @@
 # API Specification & SMM v2 Protocol Reference
 
-Dokumen ini memuat spesifikasi antarmuka pemrograman aplikasi (REST API) **Buzzer Media**, serta format integrasi protokol standar **SMM v2 API** ke provider hulu.
+Dokumen ini memuat spesifikasi antarmuka pemrograman aplikasi (REST API) **Narasi Media**, serta format integrasi protokol standar **SMM v2 API** ke provider hulu.
 
 ---
 
@@ -13,7 +13,7 @@ Dokumen ini memuat spesifikasi antarmuka pemrograman aplikasi (REST API) **Buzze
 {
   "success": true,
   "message": "Healthy",
-  "data": "Buzzer Media Backend is running"
+  "data": "Narasi Media Backend is running"
 }
 ```
 

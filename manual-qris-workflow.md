@@ -1,6 +1,6 @@
 # Alur Kerja Deposit QRIS Manual & Verifikasi Admin
 
-Dokumen ini menguraikan secara rinci siklus hidup fitur **Deposit QRIS Manual** pada platform Buzzer Media, yang dirancang tanpa ketergantungan pada pihak ketiga pada tahap awal peluncuran.
+Dokumen ini menguraikan secara rinci siklus hidup fitur **Deposit QRIS Manual** pada platform Narasi Media, yang dirancang tanpa ketergantungan pada pihak ketiga pada tahap awal peluncuran.
 
 ---
 
@@ -10,11 +10,11 @@ Dokumen ini menguraikan secara rinci siklus hidup fitur **Deposit QRIS Manual** 
 sequenceDiagram
     autonumber
     actor User as Member Klien
-    participant WebApp as buzzer-media-web-apps
-    participant Backend as buzzer-media-backend
+    participant WebApp as narasi-media-web-apps
+    participant Backend as narasi-media-backend
     participant DB as Basis Data (D1/SQLite)
     actor Admin as Staf Admin Keuangan
-    participant AdminPanel as buzzer-media-admin-panel
+    participant AdminPanel as narasi-media-admin-panel
 
     User->>WebApp: Masukkan Nominal (misal Rp 50.000)
     WebApp->>Backend: POST /api/deposits (nominal=50.000)

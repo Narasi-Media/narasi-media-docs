@@ -1,11 +1,11 @@
-# Buzzer Media UI/UX Design Specification (`design.md`)
+# Narasi Media UI/UX Design Specification (`design.md`)
 *Non-AI-Slop Architecture: Linear & Shadcn-Svelte Minimalist Design System*
 
 ---
 
 ## 1. Filosofi Desain: Anti-"AI Slop"
 
-Platform **Buzzer Media** mengadopsi standar desain produk kelas atas yang terinspirasi dari produk rekayasa perangkat lunak modern terbaik dunia seperti **Linear.app**, **Vercel**, **Supabase**, dan **shadcn-svelte**.
+Platform **Narasi Media** mengadopsi standar desain produk kelas atas yang terinspirasi dari produk rekayasa perangkat lunak modern terbaik dunia seperti **Linear.app**, **Vercel**, **Supabase**, dan **shadcn-svelte**.
 
 ### Mengapa Desain Ini Berbeda dari Template AI Biasa ("Anti AI Slop")?
 1. **Tidak Ada Gradien Ungu/Pink Klise**: Menghilangkan gradien ungu jenuh (*cliché AI gradient*) yang sering dihasilkan secara instan oleh model AI.

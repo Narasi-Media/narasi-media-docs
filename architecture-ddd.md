@@ -1,6 +1,6 @@
 # Domain-Driven Design (DDD) Architecture Specification
 
-Dokumen ini menjelaskan arsitektur perangkat lunak **Buzzer Media Backend** yang dirancang dengan prinsip **Domain-Driven Design (DDD)** dan **Hexagonal Architecture (Ports and Adapters)**.
+Dokumen ini menjelaskan arsitektur perangkat lunak **Narasi Media Backend** yang dirancang dengan prinsip **Domain-Driven Design (DDD)** dan **Hexagonal Architecture (Ports and Adapters)**.
 
 ---
 
