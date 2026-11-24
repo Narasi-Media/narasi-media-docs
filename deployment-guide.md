@@ -4,6 +4,21 @@ Narasi Media dirancang secara **deployment-agnostic**. Kode domain dan aplikasi 
 
 ---
 
+## 0. Git Branching & Mandatory Production Update Rule (ATURAN UTAMA WORKSPACE)
+
+Ekosistem Narasi Media menerapkan aturan deployment berkelanjutan (**Continuous Deployment**):
+* **Default Branch**: `development` adalah basis pengerjaan aktif seluruh repositori.
+* **Production Branch**: `production` adalah branch stabil yang selalu siap produksi.
+* **Mandatory PROD Sync**:
+  * Setiap perubahan, fitur baru, dan perbaikan bug yang telah dibuat di branch `development` **wajib selalu dimerge ke branch `production`**.
+  * Setiap kali merge ke `production`, sistem **wajib dideploy langsung ke Production (PROD)** di Cloudflare Workers:
+    * `narasi-media-admin`: `https://narasi-media-admin.narasi-media.workers.dev`
+    * `narasi-media-web`: `https://narasi-media-web.narasi-media.workers.dev`
+    * `narasi-media-api`: `https://narasi-media-api.narasi-media.workers.dev`
+  * Tidak boleh ada kode yang tertahan hanya di development. Lingkungan Production harus selalu up-to-date.
+
+---
+
 ## 1. Opsi A: Deployment di Cloudflare Workers (Free Tier)
 
 Cloudflare Workers Free Tier menyediakan kuota harian yang cukup untuk tahap peluncuran awal:
